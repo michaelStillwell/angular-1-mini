@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>A title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body ng-controller="mainCtrl">
+    <input ng-model="filter.name" />
+    <input ng-model="filter.age" /><br>
+    <select ng-model="order" 
+            ng-options="opt for opt in opts"
+    ></select>
+    <select ng-model="direction" 
+            ng-options="dir.value as dir.name for dir in directions"
+    ></select>
+    <div ng-repeat="friend in friends | filter: filter | orderBy: direction + order">
+        Name: {{ friend.name }},
+        Age: {{ friend.age }}
+        <hr />
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+    <script src="./app/app.js"></script>
+    <script src="./app/controllers/mainCtrl.js"></script>
+</body>
+</html>
